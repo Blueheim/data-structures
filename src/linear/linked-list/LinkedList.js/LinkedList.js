@@ -176,6 +176,8 @@ class LinkedList {
       }
       this.size -= 1;
     }
+
+    return currentHead;
   }
 
   /**
@@ -193,6 +195,49 @@ class LinkedList {
         this.head = null;
       }
       this.size -= 1;
+    }
+
+    return currentTail;
+  }
+
+  /**
+   * Remove the node corresponding to th specified index
+   * Runtime: O(n) in worst-case scenario
+   * @param {number} [index=0]
+   * @returns {any} the removed node or 'null'
+   * @memberof LinkedList
+   */
+  removeByIndex(index = 0) {
+    if (index === 0) {
+      return this.removeFirst();
+    }
+
+    if (index === this.size - 1) {
+      return this.removeLast();
+    }
+
+    const node = this.getNode(index);
+
+    if (node) {
+      node.previous.next = node.next;
+      node.next.previous = node.previous;
+      this.size -= 1;
+      return node;
+    }
+
+    return null;
+  }
+
+  /**
+   * Iterator implementation
+   *
+   * @memberof LinkedList
+   */
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
     }
   }
 }

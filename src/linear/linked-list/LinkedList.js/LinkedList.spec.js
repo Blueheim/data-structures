@@ -148,4 +148,16 @@ describe('LinkedList', () => {
       expect(linkedList.length).toBe(0);
     });
   });
+
+  describe('RemoveByIndex()', () => {
+    it('should remove the node at the specified index', () => {
+      linkedList.add('One');
+      linkedList.add('Two');
+      linkedList.add('Three');
+
+      const node = linkedList.removeByIndex(1);
+
+      expect(node.value).toBe('Two');
+    });
+  });
 });
