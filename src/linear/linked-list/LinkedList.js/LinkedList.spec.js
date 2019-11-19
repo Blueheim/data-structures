@@ -108,4 +108,44 @@ describe('LinkedList', () => {
       expect(middleNode.value).toBe('Middle');
     });
   });
+
+  describe('GetIndex()', () => {
+    it('should return the index of the first node matching a specified value', () => {
+      linkedList.add('japan');
+      linkedList.add('japan');
+
+      const index = linkedList.getIndex('japan');
+
+      expect(index).toBe(0);
+    });
+
+    it('should return null when no value matching', () => {
+      linkedList.add('japan');
+      linkedList.add('france');
+
+      const index = linkedList.getIndex('germany');
+
+      expect(index).toBeNull();
+    });
+  });
+
+  // TODO: improve tests
+  describe('RemoveFirst()', () => {
+    it('should remove the head node of the list', () => {
+      linkedList.addFirst('First');
+      linkedList.removeFirst();
+
+      expect(linkedList.length).toBe(0);
+    });
+  });
+
+  // TODO: improve tests
+  describe('RemoveLast()', () => {
+    it('should remove the tail node of the list', () => {
+      linkedList.addLast('Last');
+      linkedList.removeLast();
+
+      expect(linkedList.length).toBe(0);
+    });
+  });
 });

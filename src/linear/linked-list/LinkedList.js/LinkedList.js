@@ -146,9 +146,9 @@ class LinkedList {
 
   /**
    * Retrieve the node index (first match) corresponding to the specified value
-   * +Runtime: O(n)
-   * @param {*} value
-   * @returns
+   * Runtime: O(n)
+   * @param {any} value value to be searched with
+   * @returns {number} index found or 'null' if no matching
    * @memberof LinkedList
    */
   getIndex(value) {
@@ -158,6 +158,42 @@ class LinkedList {
       }
       return null;
     });
+  }
+
+  /**
+   * Remove the first element of the list
+   * Runtime: O(1)
+   * @memberof LinkedList
+   */
+  removeFirst() {
+    const currentHead = this.head;
+    if (currentHead) {
+      this.head = currentHead.next;
+      if (this.head) {
+        this.head.previous = null;
+      } else {
+        this.tail = null;
+      }
+      this.size -= 1;
+    }
+  }
+
+  /**
+   * Remove the last element of the list
+   * Runtime: O(1)
+   * @memberof LinkedList
+   */
+  removeLast() {
+    const currentTail = this.tail;
+    if (currentTail) {
+      this.tail = currentTail.previous;
+      if (this.tail) {
+        this.tail.next = null;
+      } else {
+        this.head = null;
+      }
+      this.size -= 1;
+    }
   }
 }
 
