@@ -1,4 +1,4 @@
-const Node = require('../../node/Node');
+const Node = require('../node/Node');
 /**
  * @author: Xavier <Blueheim> Deroeux
  * Data structure representing the Linked List
